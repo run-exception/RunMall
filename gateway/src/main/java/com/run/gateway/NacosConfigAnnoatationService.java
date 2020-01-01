@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 @Component
 @NacosPropertySource(dataId = "com.run.gateway", groupId="DEFAULT_GROUP", autoRefreshed = true)
 public class NacosConfigAnnoatationService implements CommandLineRunner {
@@ -22,9 +21,6 @@ public class NacosConfigAnnoatationService implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        while (true) {
-            Thread.sleep(4000);
-            LOGGER.info("[NacosConfigAnnoatationService]注解方式获取到的配置项目,name={},interest={}", name, interest);
-        }
+        LOGGER.info("[NacosConfigAnnoatationService]注解方式获取到的配置项目,name={},interest={}", name, interest);
     }
 }
