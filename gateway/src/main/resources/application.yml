@@ -1,17 +1,33 @@
+#server:
+#  port: 8080
+#zuul:
+#  routes:
+#    mall:
+#      path: /mall/**
+#      serviceId: secondkill
+#spring:
+#  application:
+#    name: gateway
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: localhost:8848
+#nacos:
+#  config:
+#    server-addr: localhost:8848
+server:
+  port: 8080
+
 spring:
   application:
-    name: gateway
+    name: @artifactId@
   cloud:
     nacos:
       discovery:
-        server-addr: 127.0.0.1:8848
-server:
-  port: 8080
-zuul:
-  routes:
-    mall:
-      path: /mall/**
-      serviceId: secondkill
-nacos:
-  config:
-    server-addr: localhost:8848
+        server-addr: ${NACOS-HOST:localhost}:${NACOS-PORT:8848}
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yml
+        shared-dataids: application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+  profiles:
+    active: @profiles.active@
