@@ -5,5 +5,15 @@ spring:
     nacos:
       discovery:
         server-addr: 127.0.0.1:8848
+
+  redis:
+    database: 0
+    host: 192.168.204.128
+    port: 6379
+    jedis:
+      pool:
+        max-active: 4
+        max-idle: 4
+
 server:
   port: 9010
