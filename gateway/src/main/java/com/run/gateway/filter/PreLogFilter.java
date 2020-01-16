@@ -43,9 +43,9 @@ public class PreLogFilter extends ZuulFilter {
         RequestContext context = RequestContext.getCurrentContext();
         HttpServletRequest request = context.getRequest();
         try {
-            logger.info("Request to {} with Params {} ",request.getRequestURI(),objectMapper.writeValueAsString(request.getParameterMap()));
+            logger.info("Request to {} with Params {} ", request.getRequestURI(), objectMapper.writeValueAsString(request.getParameterMap()));
         } catch (JsonProcessingException e) {
-            logger.info("Request to {} with Params {} ",request.getRequestURI(), JSON.toJSONString(request.getParameterMap()));
+            logger.info("Request to {} with Params {} ", request.getRequestURI(), JSON.toJSONString(request.getParameterMap()));
         }
         return null;
     }
